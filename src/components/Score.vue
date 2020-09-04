@@ -7,19 +7,26 @@
           <span class="cell" :class="color.color"><CircleIcon  /><span>{{color.pointsMin}}</span></span>
         </div>
       </div>
-      <div class="cell-big"><span class="label">BONUS</span>=</div>
-      <div class="cell-big"><span class="label">A-O</span>+</div>
-      <div class="cell-big"><span class="label">! (+1)</span>+</div>
-      <div class="cell-big"><span class="label">* (-2)</span>-</div>
+      <div class="cell-big">
+        <span class="label bonus">
+          <span class="green">B</span>
+          <span class="yellow">O</span>
+          <span class="blue">N</span>
+          <span class="pink">U</span>
+          <span class="orange">S</span>
+        </span><PauseIcon class="equalsSign" /></div>
+      <div class="cell-big"><span class="label">A - O</span><span class="plus"/></div>
+      <div class="cell-big"><span class="label points"><span class="joker"><CircleIcon  />!</span></span><span class="plus"/></div>
+      <div class="cell-big"><span class="label points star"><StarIcon /></span><span class="minus"/></div>
     </div>
-    <div class="cell-big"><span class="label">TOTAAL</span>=</div>
+    <div class="cell-big"><span class="label">TOTAAL</span><PauseIcon class="equalsSign" /></div>
   </div>
   
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { CircleIcon } from 'vue-feather-icons'
+import { CircleIcon, PauseIcon, StarIcon} from 'vue-feather-icons'
 
 
 export default {
@@ -28,7 +35,9 @@ export default {
     ...mapGetters(["colors"]),
   },
   components: {
-    CircleIcon
+    CircleIcon,
+    PauseIcon,
+    StarIcon
   },
 
 }
@@ -36,6 +45,87 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.label.points{
+  margin-right: 27px;
+  position: relative;
+}
+.label.points:after{
+  content: '(+1)';
+  font-size: 12px;
+  position: absolute;
+  right: -27px;
+  top:5px;
+}
+.label.points.star:after{
+  content: '(-2)';
+  right: -25px;
+}
+
+.joker{
+  position: relative;
+  width: 23px;
+  height: 23px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+.joker svg{
+    position: absolute;
+    width: 23px;
+    height: 23px;
+}
+.star svg{
+  width: 23px;
+  height: 23px;
+  fill: white;
+}
+.equalsSign{
+  transform: rotate(90deg);
+  fill: #043d48;
+  color: transparent;
+  width: 15px;
+  height: 15px;
+}
+.plus{
+  position: relative;
+  width:12px;
+  height:12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plus::before{
+  content: '';
+  position: absolute;
+  width:11px;
+  height:3px;
+  background-color: green;
+}
+.plus::after{
+  content: '';
+  position: absolute;
+  width:3px;
+  height:11px;
+  background-color: green;
+}
+
+.minus{
+  position: relative;
+  width:12px;
+  height:12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.minus::after{
+  content: '';
+  position: absolute;
+  width:11px;
+  height:3px;
+  background-color: red;
+}
 .score-bar{
   display:flex;
   flex-direction: column;
@@ -74,6 +164,7 @@ export default {
   padding: 0 5px;
   font-weight: bold;
   font-size: 20px;
+  color: #043d48;
 }
 .cell-big .label{
   position: absolute;
@@ -98,22 +189,34 @@ export default {
 }
 .cell.green{
   background-color: #83c938;
-  color: #83c938;
   }
 .cell.pink{
   background-color: #e1106b;
-  color: #e1106b;
 }
 .cell.yellow{
   background-color: #fec709;
-  color: #fec709;
 }
 .cell.blue{
   background-color: #70c8f1;
-  color: #70c8f1;
 }
 .cell.orange{
   background-color: #de782d;
+}
+
+.green{
+  color: #83c938;
+  }
+.pink{
+  color: #e1106b;
+}
+.yellow{
+  color: #fec709;
+}
+.blue{
+  color: #70c8f1;
+}
+.orange{
   color: #de782d;
 }
+
 </style>
