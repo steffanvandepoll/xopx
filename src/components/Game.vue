@@ -22,7 +22,9 @@
       <Jokers />
     </div>
     <Score />
+    <Finish v-if="isFinished"/>
   </div>
+
 </template>
 
 <script>
@@ -31,20 +33,22 @@ import Dice from './Dice.vue';
 import TurnCounter from './TurnCounter.vue';
 import Score from './Score.vue';
 import Jokers from './Jokers.vue';
+import Finish from './Finish.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 
 export default {
   name: 'Game',
   computed: {
-    ...mapGetters(["turn", "nextTurnIsPossible"]),
+    ...mapGetters(["turn", "nextTurnIsPossible", "isFinished"]),
   },
   components: {
     Sheet,
     Dice,
     TurnCounter,
     Score,
-    Jokers
+    Jokers,
+    Finish,
   },
   methods: {
     ...mapActions(["rollTheDie"]),

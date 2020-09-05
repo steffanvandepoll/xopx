@@ -23,6 +23,15 @@ function initSheet(){
     return sheet;
 }
 
+function initColors(){
+    let colors = sheetData.colors;
+    for (let i in colors) {
+        let color = colors[i];
+        color.completed = false;
+    }
+    return colors;
+}
+
 function fadeCells(state){
     let sheet = state.sheet;
     let selectedColor = state.colorDice ? state.colorDice.value : null;
@@ -48,6 +57,28 @@ function markCells(state){
         }
     }
     return sheet;
+}
+
+function markColors(state){
+    let colors = state.colors;
+    for (let i in colors) {
+        let color = colors[i];
+        color.completed = checkIfColorIsCompleted(state.sheet, color.color);
+    }
+    return colors;
+}
+
+function checkIfColorIsCompleted(sheet, color){
+    for (let i in sheet.colls) {
+        let coll = sheet.colls[i];
+        for(let y in coll.cells){
+            let cell = coll.cells[y];
+            if(!cell.marked && cell.color === color){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 function markJokers(state){
@@ -164,6 +195,8 @@ export default new Vuex.Store({
         selectionCount: 0,
         selectedCells: [],
         sheet: initSheet(),
+        colors: initColors(),
+        isFinished: false
     },
     mutations: { 
         setNumber(state, dice){
@@ -244,8 +277,10 @@ export default new Vuex.Store({
             if(!skip){
                 markCells(this.state);
                 markJokers(this.state);
+                markColors(this.state);
             }
-            if(!this.state.rolling){
+
+            if(!this.state.rolling && this.state.turn < 30){
                 this.state.rolling = true;
                 this.state.currentColor = null;
                 this.state.colorDice = null;
@@ -259,6 +294,25 @@ export default new Vuex.Store({
 
                 setTimeout(() => { this.state.rolling = false; }, 1000);
             }
+            else if(this.state.turn >= 30){
+                this.state.isFinished = true;
+            }
+        },
+        resetGame(){
+            this.replaceState({
+                turn: 0,
+                jokersUsed: 0,
+                rolling: false,
+                nextTurnIsPossible: true,
+                numberDice: null,
+                colorDice: null,
+                currentColor: null,
+                selectionCount: 0,
+                selectedCells: [],
+                sheet: initSheet(),
+                colors: initColors(),
+                isFinished: false
+            });
         }
     },
     modules: {
@@ -289,8 +343,8 @@ export default new Vuex.Store({
         nextTurnIsPossible(state){
             return state.nextTurnIsPossible;
         },
-        colors(){
-            return sheetData.colors
+        colors(state){
+            return state.colors
         },
         jokersMax(){
             return sheetData.nrOfJokers;
@@ -298,5 +352,40 @@ export default new Vuex.Store({
         jokersUsed(state){
             return state.jokersUsed;
         },
+        colorPoints(state){
+            let points = 0;
+            for(let i in state.colors){
+                let color = state.colors[i];
+                if(color.completed){
+                    points+= 5;
+                }
+            }
+            return points;
+        },
+        columnPoints(state){
+            let points = 0;
+            for(let i in state.sheet.colls){
+                let coll = state.sheet.colls[i];
+                if(coll.cells.filter(cell => !cell.marked).length === 0){
+                    points+= coll.pointsMax;
+                }
+            }
+            return points;
+        },
+        jokerPoints(state){
+            return sheetData.nrOfJokers - state.jokersUsed;
+        },
+        starPoints(state){
+            let points = 0;
+            for(let i in state.sheet.colls){
+                let coll = state.sheet.colls[i];
+                coll.cells.filter(cell => (!cell.marked && cell.hasStar)).length
+                points += coll.cells.filter(cell => (!cell.marked && cell.hasStar)).length * 2;
+            }
+            return points;
+        },
+        isFinished(state){
+            return state.isFinished;
+        }
     },
 });

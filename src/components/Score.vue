@@ -3,8 +3,8 @@
     <div class="score-parts">
       <div class="color-cells">
         <div v-for="(color, i) in colors" :key="i">
-          <span class="cell" :class="color.color"><CircleIcon  /><span>{{color.pointsMax}}</span></span>
-          <span class="cell" :class="color.color"><CircleIcon  /><span>{{color.pointsMin}}</span></span>
+          <span class="cell " :class="[color.color, {'inactive': !color.completed}]"><CircleIcon  /><span>{{color.pointsMax}}</span></span>
+          <span class="cell inactive" :class="color.color"><CircleIcon  /><span>{{color.pointsMin}}</span></span>
         </div>
       </div>
       <div class="cell-big">
@@ -14,12 +14,12 @@
           <span class="blue">N</span>
           <span class="pink">U</span>
           <span class="orange">S</span>
-        </span><PauseIcon class="equalsSign" /></div>
-      <div class="cell-big"><span class="label">A - O</span><span class="plus"/></div>
-      <div class="cell-big"><span class="label points"><span class="joker"><CircleIcon  />!</span></span><span class="plus"/></div>
-      <div class="cell-big"><span class="label points star"><StarIcon /></span><span class="minus"/></div>
+        </span><PauseIcon class="equalsSign" /><span class="score">{{colorPoints}}</span></div>
+      <div class="cell-big"><span class="label">A - O</span><span class="plus"/><span class="score">{{columnPoints}}</span></div>
+      <div class="cell-big"><span class="label points"><span class="joker"><CircleIcon  />!</span></span><span class="plus"/><span class="score">{{jokerPoints}}</span></div>
+      <div class="cell-big"><span class="label points star"><StarIcon /></span><span class="minus"/><span class="score">{{starPoints}}</span></div>
     </div>
-    <div class="cell-big"><span class="label">TOTAAL</span><PauseIcon class="equalsSign" /></div>
+    <div class="cell-big"><span class="label">TOTAAL</span><PauseIcon class="equalsSign" /><span class="score">{{colorPoints + columnPoints + jokerPoints - starPoints}}</span></div>
   </div>
   
 </template>
@@ -32,7 +32,7 @@ import { CircleIcon, PauseIcon, StarIcon} from 'vue-feather-icons'
 export default {
   name: 'Score',
   computed: {
-    ...mapGetters(["colors"]),
+    ...mapGetters(["colors", "colorPoints", "columnPoints", "jokerPoints", "starPoints"]),
   },
   components: {
     CircleIcon,
@@ -45,6 +45,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.score{
+  margin-left: 5px;
+}
 .label.points{
   margin-right: 27px;
   position: relative;
@@ -154,6 +157,7 @@ export default {
 }
 .cell-big{
   display: flex;
+  justify-content: space-between;
   background: white;
   height: 33px;
   width: 74px;
@@ -161,7 +165,7 @@ export default {
   border-radius: 5px;
   position: relative;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 10px 0 5px;
   font-weight: bold;
   font-size: 20px;
   color: #043d48;
@@ -183,9 +187,11 @@ export default {
   width: 33px;
   height: 33px;
 }
+.cell.inactive{
+  opacity: 0.3;
+}
 .cell span{
   position: absolute;
-
 }
 .cell.green{
   background-color: #83c938;

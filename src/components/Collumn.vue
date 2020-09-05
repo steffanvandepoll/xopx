@@ -11,8 +11,8 @@
     :selected="cell.selected" 
     :marked="cell.marked"
     :startingLane="cell.startingLane"/>
-    <span class="points-max cell">{{pointsMax}}</span>
-    <span class="points-min cell">{{pointsMin}}</span>
+    <span class="points-max cell" :class="{'inactive': isFullyMarked()}">{{pointsMax}}</span>
+    <span class="points-min cell inactive">{{pointsMin}}</span>
   </div>
 </template>
 
@@ -30,6 +30,11 @@ export default {
     pointsMax: Number,
     pointsMin: Number,
     startingLane: Boolean
+  },
+  methods: {
+    isFullyMarked: function () {
+       return this.$props.cells.filter(cell => !cell.marked).length > 0;
+    },
   }
 }
 </script>
@@ -43,6 +48,9 @@ export default {
   .cell{
     background-color: white;
     font-weight: bold;
+  }
+  .cell.inactive{
+    opacity: 0.3;
   }
 
   .collname{
