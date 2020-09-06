@@ -313,6 +313,7 @@ export default new Vuex.Store({
                 colors: initColors(),
                 isFinished: false
             });
+            this.dispatch('rollTheDie');
         }
     },
     modules: {
