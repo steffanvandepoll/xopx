@@ -185,6 +185,7 @@ function countIsAcceptable(numberDice, count){
 
 export default new Vuex.Store({
     state: {
+        best: localStorage.getItem('best'),
         turn: 0,
         jokersUsed: 0,
         rolling: false,
@@ -273,7 +274,7 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        rollTheDie(state, skip){
+        rollTheDie({getters}, skip){
             if(!skip){
                 markCells(this.state);
                 markJokers(this.state);
@@ -296,10 +297,18 @@ export default new Vuex.Store({
             }
             else if(this.state.turn >= 30){
                 this.state.isFinished = true;
+                let score = getters.colorPoints + getters.columnPoints + getters.jokerPoints - getters.starPoints;
+
+                if(this.state.best === null || score > this.state.best){
+                    console.log("setting a new high score");
+                    localStorage.setItem("best", score);
+                    this.state.score = score;
+                }             
             }
         },
         resetGame(){
             this.replaceState({
+                best: localStorage.getItem("best"),
                 turn: 0,
                 jokersUsed: 0,
                 rolling: false,
@@ -314,7 +323,7 @@ export default new Vuex.Store({
                 isFinished: false
             });
             this.dispatch('rollTheDie');
-        }
+        },
     },
     modules: {
         
@@ -387,6 +396,9 @@ export default new Vuex.Store({
         },
         isFinished(state){
             return state.isFinished;
-        }
+        },
+        best(state){
+            return state.best;
+        },
     },
 });
