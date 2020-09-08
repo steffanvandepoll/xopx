@@ -36,13 +36,18 @@
             <tr>
               <td>TOTAL</td>
               <td><PauseIcon class="equalsSign" /></td>
-              <td>{{colorPoints + columnPoints + jokerPoints - starPoints}}</td>
+              <td>{{total()}}</td>
             </tr>
           </table>
+          <div class="star-rating">
+            <div class="filled"><StarIcon v-for="(color, i) in starRating(total())" :key="i" /></div>
+            <div class="empty"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
+          </div>
+          <blockquote>{{scoreText(total())}}</blockquote>
 
           <div class="actions">
             <button v-on:click="resetGame()"><RefreshCcwIcon />Try again</button>
-            <button v-on:click="onShareButtonClick(colorPoints + columnPoints + jokerPoints - starPoints)"><Share2Icon />Share your score</button>
+            <button v-on:click="onShareButtonClick(total())"><Share2Icon />Share your score</button>
           </div>
 
       </div>
@@ -72,12 +77,98 @@ export default {
       text += points;
       text += " points on https%3A%2F%2Fxopx.netlify.app%2F!! Try and beat that"
       window.location.href = text;
+    },
+    total: function(){
+      return this.colorPoints + this.columnPoints + this.jokerPoints - this.starPoints;
+    },
+    starRating: function(total){
+      if(total > 40){
+        return 5;
+      }
+      else if(total > 32){
+        return 4;
+      }
+      else if(total > 24){
+        return 3;
+      }
+      else if(total > 16){
+        return 2;
+      }
+      else if(total > 8){
+        return 1;
+      }
+      return 0;
+    },
+    scoreText: function(total){
+      if(total > 40){
+        return "Superheroes exist after all!!";
+      }
+      else if(total > 36){
+        return "Is your nickname maybe 'the brain'?!";
+      }
+      else if(total > 32){
+        return "You should play this game proffesionally";
+      }
+      else if(total > 28){
+        return "Super! Awesome achievement!";
+      }
+      else if(total > 24){
+        return "I hope you did this without cheating";
+      }
+      else if(total > 20){
+        return "That went pretty well";
+      }
+      else if(total > 16){
+        return "This wasn't your first try... was it?";
+      }
+      else if(total > 12){
+        return "Good, but you can probably do better";
+      }
+      else if(total > 8){
+        return "You're slowely getting somewhere";
+      }
+      else if(total > 4){
+        return "This needs a lot of practice";
+      }
+      else if(total > -1){
+        return "At least you tried";
+      }
+      return "This is refusing to play the game.";
     }
   }
 }
 </script>
 
 <style scoped>
+.star-rating{
+  width:120px;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.star-rating .filled{
+  position: absolute;
+  z-index: 1;
+  left:0;
+}
+
+.star-rating .empty{
+  position: absolute;
+  z-index: 2;
+}
+
+.star-rating .filled svg{
+  stroke-width: 0;
+  fill: yellow;
+}
+
+blockquote:before {
+  content: open-quote;
+}
+blockquote:after {
+  content: close-quote;
+}
 
 h3{
   font-size: 15px;
