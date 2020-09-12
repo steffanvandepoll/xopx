@@ -197,9 +197,13 @@ export default new Vuex.Store({
         selectedCells: [],
         sheet: initSheet(),
         colors: initColors(),
-        isFinished: false
+        isFinished: false,
+        showHelp: false
     },
     mutations: { 
+        showHelp(state, value){
+            this.state.showHelp = value;
+        },
         setNumber(state, dice){
             if(dice.value === "?"){
                 //check if we have jokers left.
@@ -320,7 +324,8 @@ export default new Vuex.Store({
                 selectedCells: [],
                 sheet: initSheet(),
                 colors: initColors(),
-                isFinished: false
+                isFinished: false,
+                showHelp: false
             });
             this.dispatch('rollTheDie');
         },
@@ -400,5 +405,8 @@ export default new Vuex.Store({
         best(state){
             return state.best;
         },
+        help(state){
+            return state.showHelp;
+        }
     },
 });

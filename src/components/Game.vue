@@ -2,6 +2,7 @@
   <div id="game">
     <img class="hamburger-icon" src="../assets/hamburger.png">
     <img class="online-icon" src="../assets/online.png">
+    <HelpCircleIcon class="help-icon" v-on:click="showHelp(true)" />
     <h1>KEER OP KEER</h1>
     <div class="game-container">
       <div id="actions">
@@ -27,6 +28,7 @@
       </div>
       <Score />
       <Finish v-if="isFinished"/>
+      <Help v-if="help" />
     </div>
   </div>
 
@@ -39,13 +41,16 @@ import TurnCounter from './TurnCounter.vue';
 import Score from './Score.vue';
 import Jokers from './Jokers.vue';
 import Finish from './Finish.vue';
-import { mapActions, mapGetters } from 'vuex';
+import Help from './Help.vue';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
+
+import { HelpCircleIcon } from 'vue-feather-icons'
 
 
 export default {
   name: 'Game',
   computed: {
-    ...mapGetters(["turn", "nextTurnIsPossible", "isFinished"]),
+    ...mapGetters(["turn", "nextTurnIsPossible", "isFinished", "help"])
   },
   components: {
     Sheet,
@@ -54,9 +59,12 @@ export default {
     Score,
     Jokers,
     Finish,
+    Help,
+    HelpCircleIcon,
   },
   methods: {
     ...mapActions(["rollTheDie"]),
+    ...mapMutations(["showHelp"]),
     onRollButtonClicked: function () {
       if(this.nextTurnIsPossible){
         this.rollTheDie(false)
@@ -85,8 +93,20 @@ h1{
   margin:0 0 10px 0;
 }
 
-.hamburger-icon, .online-icon{
+.hamburger-icon, .online-icon, .help-icon{
   position: absolute;
+}
+
+.help-icon{
+  color: white;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+  cursor: pointer;
+}
+.help-icon:hover{
+  fill: #b4004e;
 }
 
 .hamburger-icon{
