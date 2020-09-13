@@ -1,0 +1,574 @@
+{
+    "name" : "Sheet 3",
+    "colls" : [
+        {
+            "name": "A",
+            "pointsMax": 5,
+            "pointsMin": 3,
+            "cells": [
+                {   
+                    "id" : 0,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 1,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 2,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 3,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 4,
+                    "color" : "green"
+                },
+                {
+                    "id" : 5,
+                    "color" : "blue",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 6,
+                    "color" : "pink"
+                }
+            ]
+        },
+        {
+            "name": "B",
+            "pointsMax": 3,
+            "pointsMin": 2,
+            "cells": [
+                {
+                    "id" : 7,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 8,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 9,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 10,
+                    "color" : "green",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 11,
+                    "color" : "green"
+                },
+                {
+                    "id" : 12,
+                    "color" : "green"
+                },
+                {   
+                    "id" : 13,
+                    "color" : "pink"
+                }
+            ]
+        },
+        {
+            "name": "C",
+            "pointsMax": 3,
+            "pointsMin": 2,
+            "cells": [
+                {   
+                    "id" : 14,
+                    "color" : "orange",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 15,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 16,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 17,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 18,
+                    "color" : "green"
+                },
+                {
+                    "id" : 19,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 20,
+                    "color" : "pink"
+                }
+            ]
+        },
+        {
+            "name": "D",
+            "pointsMax": 3,
+            "pointsMin": 2,
+            "cells": [
+                {
+                    "id" : 21,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 22,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 23,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 24,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 25,
+                    "color" : "pink",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 26,
+                    "color" : "green"
+                },
+                {
+                    "id" : 27,
+                    "color" : "green"
+                }
+            ]
+        },
+        {
+            "name": "E",
+            "pointsMax": 2,
+            "pointsMin": 1,
+            "cells": [
+                {
+                    "id" : 28,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 29,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 30,
+                    "color" : "yellow",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 31,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 32,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 33,
+                    "color" : "green"
+                },
+                {
+                    "id" : 34,
+                    "color" : "blue"
+                }
+            ]
+        },
+        {
+            "name": "F",
+            "pointsMax": 2,
+            "pointsMin": 1,
+            "cells": [
+                {
+                    "id" : 35,
+                    "color" : "green",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 36,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 37,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 38,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 39,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 40,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 41,
+                    "color" : "blue"
+                }
+            ]
+        },
+        {
+            "name": "G",
+            "pointsMax": 2,
+            "pointsMin": 1,
+            "cells": [
+                {
+                    "id" : 42,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 43,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 44,
+                    "color" : "orange",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 45,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 46,
+                    "color" : "green"
+                },
+                {
+                    "id" : 47,
+                    "color" : "green"
+                },
+                {
+                    "id" : 48,
+                    "color" : "yellow"
+                }
+            ]
+        },
+        {
+            "name": "H",
+            "pointsMax": 1,
+            "pointsMin": 0,
+            "startingLane": true,
+            "cells": [
+                {
+                    "id" : 49,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 50,
+                    "color" : "pink",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 51,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 52,
+                    "color" : "green"
+                },
+                {
+                    "id" : 53,
+                    "color" : "green"
+                },
+                {
+                    "id" : 54,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 55,
+                    "color" : "yellow"
+                }
+            ]
+        },
+        {
+            "name": "I",
+            "pointsMax": 2,
+            "pointsMin": 1,
+            "cells": [
+                {
+                    "id" : 56,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 57,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 58,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 59,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 60,
+                    "color" : "yellow",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 61,
+                    "color" : "green"
+                },
+                {
+                    "id" : 62,
+                    "color" : "green"
+                }
+            ]
+        },
+        {
+            "name": "J",
+            "pointsMax": 2,
+            "pointsMin": 1,
+            "cells": [
+                {
+                    "id" : 63,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 64,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 65,
+                    "color" : "blue",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 66,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 67,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 68,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 69,
+                    "color" : "green"
+                }
+            ]
+        },
+        {
+            "name": "K",
+            "pointsMax": 2,
+            "pointsMin": 1,
+            "cells": [
+                {
+                    "id" : 70,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 71,
+                    "color" : "yellow",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 72,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 73,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 74,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 75,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 76,
+                    "color" : "green"
+                }
+            ]
+        },
+        {
+            "name": "L",
+            "pointsMax": 3,
+            "pointsMin": 2,
+            "cells": [
+                {
+                    "id" : 77,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 78,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 79,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 80,
+                    "color" : "orange",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 81,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 82,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 83,
+                    "color" : "green"
+                }
+            ]
+        },
+        {
+            "name": "M",
+            "pointsMax": 3,
+            "pointsMin": 2,
+            "cells": [
+                {
+                    "id" : 84,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 85,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 86,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 87,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 88,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 89,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 90,
+                    "color" : "green",
+                    "hasStar" : true
+                }
+            ]
+        },
+        {
+            "name": "N",
+            "pointsMax": 3,
+            "pointsMin": 2,
+            "cells": [
+                {
+                    "id" : 91,
+                    "color" : "green"
+                },
+                {
+                    "id" : 92,
+                    "color" : "pink",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 93,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 94,
+                    "color" : "blue"
+                },
+                {
+                    "id" : 95,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 96,
+                    "color" : "yellow"
+                },
+                {
+                    "id" : 97,
+                    "color" : "yellow"
+                }
+            ]
+        },
+        {
+            "name": "O",
+            "pointsMax": 5,
+            "pointsMin": 3,
+            "cells": [
+                {
+                    "id" : 98,
+                    "color" : "green"
+                },
+                {
+                    "id" : 99,
+                    "color" : "orange"
+                },
+                {
+                    "id" : 100,
+                    "color" : "blue",
+                    "hasStar" : true
+                },
+                {
+                    "id" : 101,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 102,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 103,
+                    "color" : "pink"
+                },
+                {
+                    "id" : 104,
+                    "color" : "yellow"
+                }
+            ]
+        }
+    ],
+    "colors": [
+        {
+            "color": "green",
+            "pointsMax": 5,
+            "pointsMin": 3
+        },
+        {
+            "color": "yellow",
+            "pointsMax": 5,
+            "pointsMin": 3
+        },
+        {
+            "color": "blue",
+            "pointsMax": 5,
+            "pointsMin": 3
+        },
+        {
+            "color": "pink",
+            "pointsMax": 5,
+            "pointsMin": 3
+        },
+        {
+            "color": "orange",
+            "pointsMax": 5,
+            "pointsMin": 3
+        }
+    ],
+    "nrOfJokers" : 8 
+}

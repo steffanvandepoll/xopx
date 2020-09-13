@@ -20,7 +20,7 @@
       <div class="cell-big"><span class="label points star"><StarIcon /></span><span class="minus"/><span class="score">{{starPoints}}</span></div>
     </div>
     <div class="cell-big"><span class="label">TOTAL</span><PauseIcon class="equalsSign" /><span class="score">{{colorPoints + columnPoints + jokerPoints - starPoints}}</span></div>
-    <div v-if="best !== null" class="cell-big"><span class="label">BEST</span><PauseIcon class="equalsSign" /><span class="score">{{best}}</span></div>
+    <div v-if="currentLevel.best !== null" class="cell-big"><span class="label">BEST</span><PauseIcon class="equalsSign" /><span class="score">{{currentLevel.best}}</span></div>
   </div>
   
 </template>
@@ -33,7 +33,7 @@ import { CircleIcon, PauseIcon, StarIcon} from 'vue-feather-icons'
 export default {
   name: 'Score',
   computed: {
-    ...mapGetters(["colors", "colorPoints", "columnPoints", "jokerPoints", "starPoints", "best"]),
+    ...mapGetters(["colors", "colorPoints", "columnPoints", "jokerPoints", "starPoints", "currentLevel"]),
   },
   components: {
     CircleIcon,

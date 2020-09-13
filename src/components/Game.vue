@@ -6,6 +6,7 @@
     <h1>KEER OP KEER</h1>
     <div class="game-container">
       <div id="actions">
+        <button class="level-select-button" v-on:click="showLevelSelect(true)">{{currentLevel.name}}</button>
         <button class="skip" :class="{disabled: turn === 0}" v-on:click="onSkipButtonClicked()">Skip Turn</button>
         <div id="dices">
           <div class="numbers"> 
@@ -29,6 +30,7 @@
       <Score />
       <Finish v-if="isFinished"/>
       <Help v-if="help" />
+      <LevelSelect v-if="levelSelect" />
     </div>
   </div>
 
@@ -42,6 +44,8 @@ import Score from './Score.vue';
 import Jokers from './Jokers.vue';
 import Finish from './Finish.vue';
 import Help from './Help.vue';
+import LevelSelect from './LevelSelect.vue';
+
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 import { HelpCircleIcon } from 'vue-feather-icons'
@@ -50,7 +54,7 @@ import { HelpCircleIcon } from 'vue-feather-icons'
 export default {
   name: 'Game',
   computed: {
-    ...mapGetters(["turn", "nextTurnIsPossible", "isFinished", "help"])
+    ...mapGetters(["turn", "nextTurnIsPossible", "isFinished", "help", "levelSelect", "currentLevel"])
   },
   components: {
     Sheet,
@@ -61,10 +65,11 @@ export default {
     Finish,
     Help,
     HelpCircleIcon,
+    LevelSelect,
   },
   methods: {
     ...mapActions(["rollTheDie"]),
-    ...mapMutations(["showHelp"]),
+    ...mapMutations(["showHelp", "showLevelSelect"]),
     onRollButtonClicked: function () {
       if(this.nextTurnIsPossible){
         this.rollTheDie(false)
@@ -147,9 +152,9 @@ button{
   font-weight: bold;;
 }
 
-.skip{
+.skip, .level-select-button{
   height: 35px;
-  margin: 2px;
+  margin: 10px 2px 2px;
 }
 
 .roll{

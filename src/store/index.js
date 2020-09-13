@@ -2,11 +2,40 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import sheetData from '../data/sheet1.json';
+import sheet2Data from '../data/sheet2.json';
+import sheet3Data from '../data/sheet3.json';
 
 Vue.use(Vuex);
 
-function initSheet(){
-    let sheet = sheetData;
+function levelData(){
+    let levels = [];
+    levels.push({
+        id: 0,
+        name: "Level 1",
+        sheet: sheetData,
+        best: localStorage.getItem("best") ? parseInt(localStorage.getItem("best")) : null,
+        scoreKey: "best"
+    });
+    levels.push({
+        id: 1,
+        name: "Level 2",
+        sheet: sheet2Data,
+        best: localStorage.getItem("level2-best") ? parseInt(localStorage.getItem("level2-best")) : null,
+        requirement: 35,
+        scoreKey: "level2-best"
+    });
+    levels.push({
+        id: 2,
+        name: "Level 3",
+        sheet: sheet3Data,
+        best: localStorage.getItem("level3-best") ? parseInt(localStorage.getItem("level3-best")) : null,
+        requirement: 75,
+        scoreKey: "level3-best"
+    });
+    return levels;
+}
+
+function initSheet(sheet){
     for (let i in sheet.colls) {
         let coll = sheet.colls[i];
 
@@ -185,7 +214,7 @@ function countIsAcceptable(numberDice, count){
 
 export default new Vuex.Store({
     state: {
-        best: localStorage.getItem('best'),
+        currentLevel: levelData()[0],
         turn: 0,
         jokersUsed: 0,
         rolling: false,
@@ -195,14 +224,18 @@ export default new Vuex.Store({
         currentColor: null,
         selectionCount: 0,
         selectedCells: [],
-        sheet: initSheet(),
+        sheet: initSheet(levelData()[0].sheet),
         colors: initColors(),
         isFinished: false,
-        showHelp: false
+        showHelp: false,
+        levelSelect: false
     },
     mutations: { 
         showHelp(state, value){
             this.state.showHelp = value;
+        },
+        showLevelSelect(state, value){
+            this.state.levelSelect = value;
         },
         setNumber(state, dice){
             if(dice.value === "?"){
@@ -303,16 +336,17 @@ export default new Vuex.Store({
                 this.state.isFinished = true;
                 let score = getters.colorPoints + getters.columnPoints + getters.jokerPoints - getters.starPoints;
 
-                if(this.state.best === null || score > this.state.best){
+                if(this.state.currentLevel.best === null || score > this.state.currentLevel.best){
                     console.log("setting a new high score");
-                    localStorage.setItem("best", score);
+                    this.state.currentLevel.best = score;
+                    localStorage.setItem(this.state.currentLevel.scoreKey, score);
                     this.state.score = score;
                 }             
             }
         },
         resetGame(){
             this.replaceState({
-                best: localStorage.getItem("best"),
+                currentLevel: this.state.currentLevel,
                 turn: 0,
                 jokersUsed: 0,
                 rolling: false,
@@ -322,13 +356,18 @@ export default new Vuex.Store({
                 currentColor: null,
                 selectionCount: 0,
                 selectedCells: [],
-                sheet: initSheet(),
+                sheet: initSheet(this.state.currentLevel.sheet),
                 colors: initColors(),
                 isFinished: false,
-                showHelp: false
+                showHelp: false,
+                levelSelect: false
             });
             this.dispatch('rollTheDie');
         },
+        selectLevel(state, value){
+            this.state.currentLevel = value;
+            this.dispatch('resetGame');
+        }
     },
     modules: {
         
@@ -402,11 +441,17 @@ export default new Vuex.Store({
         isFinished(state){
             return state.isFinished;
         },
-        best(state){
-            return state.best;
-        },
         help(state){
             return state.showHelp;
+        },
+        levelSelect(state){
+            return state.levelSelect;
+        },
+        levels(){
+            return levelData();
+        },
+        currentLevel(state){
+            return state.currentLevel;
         }
     },
 });
