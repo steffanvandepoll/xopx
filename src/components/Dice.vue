@@ -47,7 +47,7 @@ export default {
     numberDice: {
       deep: true,
       handler(dice) {
-        if(dice.type === this.$props.type){
+        if(dice && dice.type === this.$props.type){
           this.selected = dice.id === this.$props.id;
         }
       }
@@ -55,7 +55,7 @@ export default {
     colorDice: {
       deep: true,
       handler(dice) {
-        if(dice.type === this.$props.type){
+        if(dice && dice.type === this.$props.type){
           this.selected = dice.id === this.$props.id;
         }
       }

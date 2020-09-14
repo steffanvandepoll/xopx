@@ -32,7 +32,13 @@ function levelData(){
         requirement: 75,
         scoreKey: "level3-best"
     });
+
     return levels;
+}
+
+function levelIdFromLocalStorage(){
+    let level = localStorage.getItem("level");
+    return level ? parseInt(level) : 0;
 }
 
 function initSheet(sheet){
@@ -214,7 +220,7 @@ function countIsAcceptable(numberDice, count){
 
 export default new Vuex.Store({
     state: {
-        currentLevel: levelData()[0],
+        currentLevel: levelData()[levelIdFromLocalStorage()],
         turn: 0,
         jokersUsed: 0,
         rolling: false,
@@ -224,7 +230,7 @@ export default new Vuex.Store({
         currentColor: null,
         selectionCount: 0,
         selectedCells: [],
-        sheet: initSheet(levelData()[0].sheet),
+        sheet: initSheet(levelData()[levelIdFromLocalStorage()].sheet),
         colors: initColors(),
         isFinished: false,
         showHelp: false,
@@ -248,7 +254,7 @@ export default new Vuex.Store({
                 }
             }
             this.state.numberDice = dice;
-            this.state = resetCellSelection(this.state);
+            this.replaceState(resetCellSelection(this.state));
         },
         setColor(state, dice){
             if(dice.value === "black"){
@@ -263,7 +269,7 @@ export default new Vuex.Store({
             }
             this.state.colorDice = dice;
             this.state.sheet = fadeCells(this.state);
-            this.state = resetCellSelection(this.state);
+            this.replaceState(resetCellSelection(this.state));
         },
         setCurrentColor(state, color){
             this.state.color = color;
@@ -327,7 +333,6 @@ export default new Vuex.Store({
                 this.state.nextTurnIsPossible = false;
                 this.state.selectedCells = [];
                 this.state.sheet = fadeCells(this.state);
-
                 this.replaceState(resetCellSelection(this.state));
 
                 setTimeout(() => { this.state.rolling = false; }, 1000);
@@ -362,11 +367,14 @@ export default new Vuex.Store({
                 showHelp: false,
                 levelSelect: false
             });
-            this.dispatch('rollTheDie');
+            this.dispatch('rollTheDie', false);
         },
         selectLevel(state, value){
             this.state.currentLevel = value;
-            this.dispatch('resetGame');
+            localStorage.setItem("level", value.id);
+            //horible but needed to fix bug atm
+            location.reload();
+            //this.dispatch('resetGame');
         }
     },
     modules: {

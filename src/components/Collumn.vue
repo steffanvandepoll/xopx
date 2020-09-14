@@ -35,7 +35,7 @@ export default {
     isFullyMarked: function () {
        return this.$props.cells.filter(cell => !cell.marked).length > 0;
     },
-  }
+  },
 }
 </script>
 
