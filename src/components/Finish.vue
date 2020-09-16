@@ -70,6 +70,15 @@ export default {
   computed: {
     ...mapGetters(["colorPoints", "columnPoints", "jokerPoints", "starPoints"]),
   },
+  created() {
+    // track score in ga
+    this.$ga.event({
+      eventCategory: 'scores',
+      eventAction: 'score',
+      eventLabel: 'score',
+      eventValue: this.colorPoints + this.columnPoints + this.jokerPoints - this.starPoints
+    })
+  },
   methods: {
     ...mapActions(["resetGame"]),
     onShareButtonClick: function(points){

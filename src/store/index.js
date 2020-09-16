@@ -341,6 +341,8 @@ export default new Vuex.Store({
                 this.state.isFinished = true;
                 let score = getters.colorPoints + getters.columnPoints + getters.jokerPoints - getters.starPoints;
 
+
+
                 if(this.state.currentLevel.best === null || score > this.state.currentLevel.best){
                     console.log("setting a new high score");
                     this.state.currentLevel.best = score;
