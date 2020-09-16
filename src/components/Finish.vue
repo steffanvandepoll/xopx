@@ -68,15 +68,17 @@ export default {
     Share2Icon
   },
   computed: {
-    ...mapGetters(["colorPoints", "columnPoints", "jokerPoints", "starPoints"]),
+    ...mapGetters(["colorPoints", "columnPoints", "jokerPoints", "starPoints", "currentLevel"]),
   },
   created() {
     // track score in ga
+    let score = this.colorPoints + this.columnPoints + this.jokerPoints - this.starPoints;
+    console.log("tracking score: " + score + " for level: " + this.currentLevel.name);
     this.$ga.event({
       eventCategory: 'scores',
-      eventAction: 'score',
+      eventAction: this.currentLevel.name,
       eventLabel: 'score',
-      eventValue: this.colorPoints + this.columnPoints + this.jokerPoints - this.starPoints
+      eventValue: score
     })
   },
   methods: {
