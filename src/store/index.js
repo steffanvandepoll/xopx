@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 import sheetData from '../data/sheet1.json';
 import sheet2Data from '../data/sheet2.json';
 import sheet3Data from '../data/sheet3.json';
-import sheet4Data from '../data/sheet3.json';
+import sheet4Data from '../data/sheet4.json';
 
 Vue.use(Vuex);
 
