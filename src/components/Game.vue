@@ -37,6 +37,7 @@
   <div class="news">
     <h3>updates</h3>
     <ul>
+      <li><span class="date">18/09/04</span>'Marcel' scored <strong>47</strong> points in <strong>level 3</strong> and is the current leader. </li>
       <li><span class="date">18/09/04</span><strong>Level 4</strong> and <strong>Level 5</strong> are out now enjoy!</li>
       <li><span class="date">18/09/04</span>The most played level is currently <strong>Level 2</strong>, with an average score of <strong>30</strong> points.</li>
       <li><span class="date">17/09/04</span>'Joep' scored <strong>47</strong> points in <strong>level 2</strong> and is the current leader. </li>
