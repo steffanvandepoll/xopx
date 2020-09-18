@@ -1,9 +1,10 @@
 <template>
+<div>
   <div id="game">
     <img class="hamburger-icon" src="../assets/hamburger.png">
     <img class="online-icon" src="../assets/online.png">
     <HelpCircleIcon class="help-icon" v-on:click="showHelp(true)" />
-    <h1>KEER OP KEER</h1>
+    <h1>X<MinusIcon />OP<MinusIcon />X</h1>
     <div class="game-container">
       <div id="actions">
         <button class="level-select-button" v-on:click="showLevelSelect(true)">{{currentLevel.name}}</button>
@@ -33,6 +34,15 @@
       <LevelSelect v-if="levelSelect" />
     </div>
   </div>
+  <div class="news">
+    <h3>updates</h3>
+    <ul>
+      <li><span class="date">18/09/04</span><strong>Level 4</strong> is out now enjoy!</li>
+      <li><span class="date">18/09/04</span>The most played level is currently <strong>Level 2</strong>, with an average score of <strong>30</strong> points.</li>
+      <li><span class="date">17/09/04</span>'Joep' scored <strong>47</strong> points in <strong>level 2</strong> and is the current leader. </li>
+    </ul>
+    </div>
+  </div>
 
 </template>
 
@@ -48,7 +58,7 @@ import LevelSelect from './LevelSelect.vue';
 
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 
-import { HelpCircleIcon } from 'vue-feather-icons'
+import { HelpCircleIcon, MinusIcon } from 'vue-feather-icons'
 
 
 export default {
@@ -66,6 +76,7 @@ export default {
     Help,
     HelpCircleIcon,
     LevelSelect,
+    MinusIcon,
   },
   methods: {
     ...mapActions(["rollTheDie"]),
@@ -86,6 +97,29 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.news{
+  margin-top: 30px;
+  text-align: left;
+  color: white;
+}
+.news h3{
+  margin-bottom: 0;
+}
+.news ul{
+  margin:10px 0;
+  list-style: none;
+  padding-left: 0;
+}
+.news li{
+  margin:5px 0;
+}
+.news ul .date{
+  font-weight: bold;
+}
+.news ul .date:after{
+  content: ":";
+  margin-right: 10px;
+}
 #game{
   position: relative;
   padding:20px 40px 40px 40px;
@@ -96,6 +130,10 @@ h1{
   color: white;
   font-size: 71px;
   margin:0 0 10px 0;
+}
+h1 svg{
+  width:50px;
+  height:50px;
 }
 
 .hamburger-icon, .online-icon, .help-icon{
