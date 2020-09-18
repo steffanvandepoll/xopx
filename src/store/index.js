@@ -5,6 +5,7 @@ import sheetData from '../data/sheet1.json';
 import sheet2Data from '../data/sheet2.json';
 import sheet3Data from '../data/sheet3.json';
 import sheet4Data from '../data/sheet4.json';
+import sheet5Data from '../data/sheet5.json';
 
 Vue.use(Vuex);
 
@@ -40,6 +41,14 @@ function levelData(){
         best: localStorage.getItem("level4-best") ? parseInt(localStorage.getItem("level4-best")) : null,
         requirement: 110,
         scoreKey: "level4-best"
+    });
+    levels.push({
+        id: 4,
+        name: "Level 5",
+        sheet: sheet5Data,
+        best: localStorage.getItem("level5-best") ? parseInt(localStorage.getItem("level5-best")) : null,
+        requirement: 150,
+        scoreKey: "level5-best"
     });
 
     return levels;
