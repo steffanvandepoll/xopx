@@ -5,6 +5,7 @@
           <XIcon class="close" v-on:click="showInfo(false)" />
           <h2>updates</h2>
             <ul>
+              <li><span class="date">20/09/20</span>Added <strong>Rainbow Road</strong>, made by 'Leone'.</li>
               <li><span class="date">20/09/20</span>Made <strong>level 5</strong> a bit harder by adding more stars, so reset score. Sorryyyy!</li>
               <li><span class="date">18/09/20</span>'Marcel' scored <strong>47</strong> points in <strong>level 3</strong> and is the current leader. </li>
               <li><span class="date">18/09/20</span><strong>Level 4</strong> and <strong>Level 5</strong> are out now enjoy!</li>
@@ -58,7 +59,7 @@ export default {
     z-index: -1;
 }
 .popup{
-    width: 400px;
+    width: 420px;
     padding:20px;
     background: white;
     border-radius: 5px;

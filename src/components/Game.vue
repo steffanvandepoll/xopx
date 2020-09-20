@@ -138,14 +138,16 @@ h1 svg{
 }
 
 .hamburger-icon{
-  width:80px;
-  height: 80px;
-  left:-55px;
+  width:60px;
+  height: 60px;
+  left:-33px;
+  top:40px;
 }
 
 .online-icon{
-  width:80px;
-  right:-80px;
+  width:60px;
+  right:-60px;
+  top:50px;
 }
 
 .game-container{

@@ -159,7 +159,7 @@ button{
   border-radius: 5px;
   padding: 10px 20px;
   font-weight: bold;
-  width: 125px;
+  width: 145px;
   cursor: pointer;
   margin-right: 15px;
 }

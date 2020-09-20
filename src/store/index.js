@@ -6,6 +6,7 @@ import sheet2Data from '../data/sheet2.json';
 import sheet3Data from '../data/sheet3.json';
 import sheet4Data from '../data/sheet4.json';
 import sheet5Data from '../data/sheet5.json';
+import rainbow from '../data/rainbow.json';
 
 Vue.use(Vuex);
 
@@ -49,6 +50,14 @@ function levelData(){
         best: localStorage.getItem("level5-2-best") ? parseInt(localStorage.getItem("level5-2-best")) : null,
         requirement: 150,
         scoreKey: "level5-2-best"
+    });
+    levels.push({
+        id: 5,
+        name: "Rainbow Road",
+        sheet: rainbow,
+        best: localStorage.getItem("rainbow-best") ? parseInt(localStorage.getItem("rainbow-best")) : null,
+        requirement: 200,
+        scoreKey: "rainbow-best"
     });
 
     return levels;
