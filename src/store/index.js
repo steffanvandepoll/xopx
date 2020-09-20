@@ -46,9 +46,9 @@ function levelData(){
         id: 4,
         name: "Level 5",
         sheet: sheet5Data,
-        best: localStorage.getItem("level5-best") ? parseInt(localStorage.getItem("level5-best")) : null,
+        best: localStorage.getItem("level5-2-best") ? parseInt(localStorage.getItem("level5-2-best")) : null,
         requirement: 150,
-        scoreKey: "level5-best"
+        scoreKey: "level5-2-best"
     });
 
     return levels;
@@ -252,11 +252,15 @@ export default new Vuex.Store({
         colors: initColors(),
         isFinished: false,
         showHelp: false,
-        levelSelect: false
+        levelSelect: false,
+        showInfo: false,
     },
     mutations: { 
         showHelp(state, value){
             this.state.showHelp = value;
+        },
+        showInfo(state, value){
+            this.state.showInfo = value;
         },
         showLevelSelect(state, value){
             this.state.levelSelect = value;
@@ -471,6 +475,9 @@ export default new Vuex.Store({
         },
         help(state){
             return state.showHelp;
+        },
+        info(state){
+            return state.showInfo;
         },
         levelSelect(state){
             return state.levelSelect;

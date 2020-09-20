@@ -34,7 +34,8 @@
                 },
                 {
                     "id" : 6,
-                    "color" : "yellow"
+                    "color" : "yellow",
+                    "hasStar" : true
                 }
             ]
         },
@@ -57,7 +58,8 @@
                 },
                 {
                     "id" : 10,
-                    "color" : "pink"
+                    "color" : "pink",
+                    "hasStar" : true
                 },
                 {
                     "id" : 11,
@@ -102,7 +104,8 @@
                 },
                 {
                     "id" : 19,
-                    "color" : "blue"
+                    "color" : "blue",
+                    "hasStar" : true
                 },
                 {
                     "id" : 20,
@@ -117,7 +120,8 @@
             "cells": [
                 {
                     "id" : 21,
-                    "color" : "yellow"
+                    "color" : "yellow",
+                    "hasStar" : true
                 },
                 {
                     "id" : 22,
@@ -166,7 +170,8 @@
                 },
                 {
                     "id" : 31,
-                    "color" : "orange"
+                    "color" : "orange",
+                    "hasStar" : true
                 },
                 {
                     "id" : 32,
@@ -206,7 +211,8 @@
                 },
                 {
                     "id" : 39,
-                    "color" : "pink"
+                    "color" : "pink",
+                    "hasStar" : true
                 },
                 {
                     "id" : 40,
@@ -250,7 +256,8 @@
                 },
                 {
                     "id" : 48,
-                    "color" : "pink"
+                    "color" : "pink",
+                    "hasStar" : true
                 }
             ]
         },
@@ -286,7 +293,8 @@
                 },
                 {
                     "id" : 55,
-                    "color" : "yellow"
+                    "color" : "yellow",
+                    "hasStar" : true
                 }
             ]
         },
@@ -305,7 +313,8 @@
                 },
                 {
                     "id" : 58,
-                    "color" : "pink"
+                    "color" : "pink",
+                    "hasStar" : true
                 },
                 {
                     "id" : 59,
@@ -354,7 +363,8 @@
                 },
                 {
                     "id" : 68,
-                    "color" : "orange"
+                    "color" : "orange",
+                    "hasStar" : true
                 },
                 {
                     "id" : 69,
@@ -385,7 +395,8 @@
                 },
                 {
                     "id" : 74,
-                    "color" : "orange"
+                    "color" : "orange",
+                    "hasStar" : true
                 },
                 {
                     "id" : 75,
@@ -414,7 +425,8 @@
                 },
                 {
                     "id" : 79,
-                    "color" : "yellow"
+                    "color" : "yellow",
+                    "hasStar" : true
                 },
                 {
                     "id" : 80,
@@ -453,7 +465,8 @@
                 },
                 {
                     "id" : 87,
-                    "color" : "orange"
+                    "color" : "orange",
+                    "hasStar" : true
                 },
                 {
                     "id" : 88,
@@ -502,7 +515,8 @@
                 },
                 {
                     "id" : 97,
-                    "color" : "orange"
+                    "color" : "orange",
+                    "hasStar" : true
                 }
             ]
         },
@@ -526,7 +540,8 @@
                 },
                 {
                     "id" : 101,
-                    "color" : "blue"
+                    "color" : "blue",
+                    "hasStar" : true
                 },
                 {
                     "id" : 102,

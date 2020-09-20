@@ -4,6 +4,7 @@
     <img class="hamburger-icon" src="../assets/hamburger.png">
     <img class="online-icon" src="../assets/online.png">
     <HelpCircleIcon class="help-icon" v-on:click="showHelp(true)" />
+    <AlertCircleIcon class="info-icon" v-on:click="showInfo(true)" />
     <h1>X<MinusIcon />OP<MinusIcon />X</h1>
     <div class="game-container">
       <div id="actions">
@@ -31,19 +32,11 @@
       <Score />
       <Finish v-if="isFinished"/>
       <Help v-if="help" />
+      <Info v-if="info" />
       <LevelSelect v-if="levelSelect" />
     </div>
   </div>
-  <div class="news">
-    <h3>updates</h3>
-    <ul>
-      <li><span class="date">18/09/20</span>'Marcel' scored <strong>47</strong> points in <strong>level 3</strong> and is the current leader. </li>
-      <li><span class="date">18/09/20</span><strong>Level 4</strong> and <strong>Level 5</strong> are out now enjoy!</li>
-      <li><span class="date">18/09/20</span>The most played level is currently <strong>Level 2</strong>, with an average score of <strong>30</strong> points.</li>
-      <li><span class="date">17/09/20</span>'Joep' scored <strong>47</strong> points in <strong>level 2</strong> and is the current leader. </li>
-    </ul>
-    </div>
-  </div>
+</div>
 
 </template>
 
@@ -55,17 +48,26 @@ import Score from './Score.vue';
 import Jokers from './Jokers.vue';
 import Finish from './Finish.vue';
 import Help from './Help.vue';
+import Info from './Info.vue';
 import LevelSelect from './LevelSelect.vue';
 
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 
-import { HelpCircleIcon, MinusIcon } from 'vue-feather-icons'
+import { HelpCircleIcon, AlertCircleIcon, MinusIcon } from 'vue-feather-icons'
 
 
 export default {
   name: 'Game',
   computed: {
-    ...mapGetters(["turn", "nextTurnIsPossible", "isFinished", "help", "levelSelect", "currentLevel"])
+    ...mapGetters([
+      "turn", 
+      "nextTurnIsPossible", 
+      "isFinished", 
+      "help", 
+      "info", 
+      "levelSelect", 
+      "currentLevel"
+      ]),
   },
   components: {
     Sheet,
@@ -75,13 +77,15 @@ export default {
     Jokers,
     Finish,
     Help,
+    Info,
     HelpCircleIcon,
+    AlertCircleIcon,
     LevelSelect,
     MinusIcon,
   },
   methods: {
     ...mapActions(["rollTheDie"]),
-    ...mapMutations(["showHelp", "showLevelSelect"]),
+    ...mapMutations(["showHelp", "showLevelSelect", "showInfo"]),
     onRollButtonClicked: function () {
       if(this.nextTurnIsPossible){
         this.rollTheDie(false)
@@ -98,29 +102,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.news{
-  margin-top: 30px;
-  text-align: left;
-  color: white;
-}
-.news h3{
-  margin-bottom: 0;
-}
-.news ul{
-  margin:10px 0;
-  list-style: none;
-  padding-left: 0;
-}
-.news li{
-  margin:5px 0;
-}
-.news ul .date{
-  font-weight: bold;
-}
-.news ul .date:after{
-  content: ":";
-  margin-right: 10px;
-}
 #game{
   position: relative;
   padding:20px 40px 40px 40px;
@@ -137,11 +118,11 @@ h1 svg{
   height:50px;
 }
 
-.hamburger-icon, .online-icon, .help-icon{
+.hamburger-icon, .online-icon, .help-icon, .info-icon{
   position: absolute;
 }
 
-.help-icon{
+.help-icon, .info-icon{
   color: white;
   right: 20px;
   width: 35px;
@@ -149,7 +130,10 @@ h1 svg{
   top: 20px;
   cursor: pointer;
 }
-.help-icon:hover{
+.info-icon{
+  right: 65px;
+}
+.help-icon:hover, .info-icon:hover{
   fill: #b4004e;
 }
 
